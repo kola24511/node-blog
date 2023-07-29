@@ -18,4 +18,20 @@ router.post("/register", async (req, res) => {
     }
 });
 
+router.post("/login", async (req, res) => {
+    try {
+        const user = await User.findOne({
+            login: req.body.login,
+        });
+        !user && res.status(400).json("Ошибка неверные данные");
+
+        const validated = await bcrypt.compare(req.body.password, user.password);
+        !validated && res.status(400).json("Ошибка не верные данные");
+
+        res.status(200).json(user);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
 module.exports = router
