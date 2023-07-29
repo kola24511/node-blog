@@ -9,7 +9,7 @@ mongoose.connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
 }).then(console.log("БД подключена")).catch((err) => console.log(err))
 
-app.use("api/auth", authRoute);
+app.use("/api/auth", authRoute);
 
 app.listen("3000", () => {
     console.log('Cервер запущен')
