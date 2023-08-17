@@ -26,7 +26,7 @@ router.post("/login", async (req, res) => {
         !user && res.status(400).json("Ошибка неверные данные");
 
         const validated = await bcrypt.compare(req.body.password, user.password);
-        !validated && res.status(400).json("Ошибка не верные данные");
+        !validated && res.status(400).json("Ошибка неверные данные");
 
         res.status(200).json(user);
     } catch (err) {
