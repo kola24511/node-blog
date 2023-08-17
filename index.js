@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const env = require("dotenv");
 const app = express();
 const authRoute = require("./api/routes/auth");
+
 env.config();
 
 app.use(express.json());
